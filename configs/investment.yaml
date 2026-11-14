@@ -1,0 +1,269 @@
+as_of: 2026-11-14
+years: [2027, 2028, 2029, 2030, 2031]
+# RUB millions for cash and tickets, RUB thousands for unit charges, decimals for rates.
+# All parameters are project hypotheses unless explicitly backed by the sources table.
+shared:
+  tax: 0.25
+  discount: 0.22
+  capital_hurdle: 0.22
+  amort_years: 3
+  debtor_days: 35
+  paid_months_new: 5
+  paid_months_retained: 10
+  annual_growth_cost: 0.06
+  quote: 0.81
+  recommend: 0.90
+  credit_attach: 0.08
+  credit_outstanding: 1.5
+  credit_income_rate: 0.05
+  credit_pd: 0.035
+  credit_lgd: 0.45
+  credit_capital_factor: 0.20
+segments:
+  # reach_limit is hypothetical total distinct companies in five years, NOT BSPB CRM data.
+  # Two-stage proxy: contact and activation of preselected companies.
+  small: {label: "Малый бизнес", reach_limit: 1100, contact: 0.76, active: 0.50, confirm: 0.58, rfq: 0.45, close: 0.43, retained: 0.55, repeat_share: 0.43, extra_deals: 1.5, ticket: 11, margin: 43, cannibal: 0.38, paid: 0.14, cac: 6, service: 37, maturity: 55, ead_factor: 0.10, pd: 0.029, lgd: 0.48, capital_factor: 0.24}
+  mid: {label: "Средний ВЭД", reach_limit: 790, contact: 0.82, active: 0.59, confirm: 0.73, rfq: 0.61, close: 0.56, retained: 0.71, repeat_share: 0.57, extra_deals: 2.2, ticket: 30, margin: 42, cannibal: 0.26, paid: 0.22, cac: 8, service: 41, maturity: 60, ead_factor: 0.085, pd: 0.020, lgd: 0.45, capital_factor: 0.22}
+  enterprise: {label: "Крупные с казначейством", reach_limit: 245, contact: 0.84, active: 0.56, confirm: 0.77, rfq: 0.66, close: 0.57, retained: 0.76, repeat_share: 0.63, extra_deals: 3.0, ticket: 75, margin: 27, cannibal: 0.48, paid: 0.31, cac: 29, service: 112, maturity: 75, ead_factor: 0.075, pd: 0.014, lgd: 0.42, capital_factor: 0.24}
+  mixed: {label: "Смешанная экспозиция", reach_limit: 315, contact: 0.82, active: 0.58, confirm: 0.70, rfq: 0.49, close: 0.50, retained: 0.74, repeat_share: 0.54, extra_deals: 2.1, ticket: 26, margin: 37, cannibal: 0.24, paid: 0.27, cac: 12, service: 61, maturity: 60, ead_factor: 0.075, pd: 0.018, lgd: 0.45, capital_factor: 0.22}
+  recurring: {label: "Регулярные крупные CNY-платежи", reach_limit: 380, contact: 0.87, active: 0.64, confirm: 0.82, rfq: 0.72, close: 0.61, retained: 0.77, repeat_share: 0.70, extra_deals: 3.0, ticket: 66, margin: 31, cannibal: 0.32, paid: 0.23, cac: 14, service: 62, maturity: 60, ead_factor: 0.08, pd: 0.018, lgd: 0.44, capital_factor: 0.24}
+pricing:
+  fx_only: {label: "Бесплатный Scanner + FX", monthly: 0, usage_price: 0, usage_count: 0, bundle_price: 0, paid_factor: 0, displacement: 0, activity_cost: 5, retention_factor: 1.0}
+  freemium: {label: "Freemium + аналитика", monthly: 16, usage_price: 0, usage_count: 0, bundle_price: 0, paid_factor: 1.0, displacement: 0, activity_cost: 12, retention_factor: 1.0}
+  subscription: {label: "Подписка казначейства", monthly: 34, usage_price: 0, usage_count: 0, bundle_price: 0, paid_factor: 0.75, displacement: 0, activity_cost: 28, retention_factor: 1.04}
+  usage: {label: "Оплата за применение", monthly: 0, usage_price: 4, usage_count: 5, bundle_price: 0, paid_factor: 1.23, displacement: 0, activity_cost: 9, retention_factor: 0.94}
+  bundled: {label: "Надбавка к пакету ВЭД", monthly: 0, usage_price: 0, usage_count: 0, bundle_price: 11, paid_factor: 1.20, displacement: 0.42, activity_cost: 14, retention_factor: 1.04}
+  hybrid: {label: "FX + подписка + мониторинг", monthly: 23, usage_price: 0, usage_count: 0, bundle_price: 0, paid_factor: 1.06, displacement: 0, activity_cost: 16, retention_factor: 1.05}
+products:
+  # Reach represents new contacts per year before the launch ramp. A repeat contact stays in its existing cohort.
+  # Components are independently visible in worksheets. Costs are rate-card hypotheses for budgeting, not bank rates.
+  full:
+    label: "Full FX Control"
+    segment: mid
+    pricing: hybrid
+    reach: [310, 310, 350, 360, 390]
+    stage_capex: [0, 4, 3, 2, 2]
+    capacity: [140, 235, 340, 420, 500]
+    build: 17
+    integration: 8
+    security: 5
+    setup: 2
+    infra: 5.2
+    staff: 8.8
+    licenses: 1.8
+    allocation: 2.0
+    ops_trade: 5
+    service_factor: 0.65
+    fx_factor: 1.0
+    first_month: 9
+    capital_limit: 18
+    weight_limit: 0.30
+    complexity: 5
+  lean:
+    label: "Lean FX Control"
+    segment: mid
+    pricing: freemium
+    reach: [155, 185, 220, 245, 260]
+    stage_capex: [0, 0.35, 0.45, 0.40, 0.50]
+    capacity: [55, 95, 140, 175, 205]
+    build: 1.7
+    integration: 0.65
+    security: 0.65
+    setup: 0.55
+    infra: 0.72
+    staff: 1.58
+    licenses: 0.15
+    allocation: 0.55
+    ops_trade: 8
+    service_factor: 1.05
+    fx_factor: 1.0
+    first_month: 5
+    capital_limit: 10
+    weight_limit: 0.25
+    complexity: 1
+  dbo:
+    label: "Модуль корпоративного ДБО"
+    segment: mid
+    pricing: bundled
+    reach: [255, 260, 270, 310, 335]
+    stage_capex: [0, 1.4, 1.6, 1.4, 1.3]
+    capacity: [105, 170, 235, 300, 340]
+    build: 4.3
+    integration: 4.2
+    security: 2.0
+    setup: 0.95
+    infra: 1.9
+    staff: 3.2
+    licenses: 0.7
+    allocation: 1.2
+    ops_trade: 6
+    service_factor: 0.78
+    fx_factor: 1.0
+    first_month: 7
+    capital_limit: 12
+    weight_limit: 0.25
+    complexity: 4
+  premium:
+    label: "Premium Treasury Analytics"
+    segment: enterprise
+    pricing: subscription
+    reach: [65, 75, 85, 95, 105]
+    stage_capex: [0, 0.9, 1.1, 0.7, 0.8]
+    capacity: [28, 51, 75, 100, 115]
+    build: 3.0
+    integration: 2.5
+    security: 1.0
+    setup: 0.70
+    infra: 1.1
+    staff: 2.35
+    licenses: 0.5
+    allocation: 0.7
+    ops_trade: 8
+    service_factor: 1.02
+    fx_factor: 0.30
+    first_month: 6
+    capital_limit: 12
+    weight_limit: 0.28
+    complexity: 3
+  trade:
+    label: "FX Control + Trade Finance"
+    segment: mid
+    pricing: bundled
+    reach: [130, 180, 210, 230, 260]
+    stage_capex: [0, 0.7, 1.2, 0.80, 1.0]
+    capacity: [65, 105, 150, 200, 245]
+    build: 3.35
+    integration: 3.15
+    security: 1.5
+    setup: 0.9
+    infra: 1.15
+    staff: 3.1
+    licenses: 0.4
+    allocation: 1.25
+    ops_trade: 8
+    service_factor: 1.26
+    fx_factor: 1.0
+    first_month: 6
+    capital_limit: 10
+    weight_limit: 0.28
+    complexity: 4
+  high_turnover:
+    label: "Крупный регулярный оборот"
+    segment: recurring
+    pricing: fx_only
+    reach: [93, 100, 105, 110, 115]
+    stage_capex: [0, 0.35, 0.55, 0.55, 0.65]
+    capacity: [38, 76, 111, 135, 150]
+    build: 1.9
+    integration: 0.85
+    security: 0.85
+    setup: 0.55
+    infra: 0.58
+    staff: 2.10
+    licenses: 0.17
+    allocation: 0.65
+    ops_trade: 8
+    service_factor: 1.0
+    fx_factor: 1.0
+    first_month: 4
+    capital_limit: 12
+    weight_limit: 0.22
+    complexity: 2
+  hybrid:
+    label: "Hybrid FX Control"
+    segment: recurring
+    pricing: hybrid
+    reach: [112, 120, 126, 145, 150]
+    stage_capex: [0, 0.85, 1.25, 1.0, 1.0]
+    capacity: [50, 100, 145, 175, 205]
+    build: 2.4
+    integration: 1.0
+    security: 0.7
+    setup: 0.55
+    infra: 0.87
+    staff: 2.15
+    licenses: 0.27
+    allocation: 0.70
+    ops_trade: 7
+    service_factor: 0.90
+    fx_factor: 1.0
+    first_month: 5
+    capital_limit: 12
+    weight_limit: 0.24
+    complexity: 2
+  staged:
+    label: "FX Control через менеджера"
+    segment: recurring
+    pricing: hybrid
+    reach: [102, 126, 126, 140, 145]
+    stage_capex: [0, 0.30, 0.60, 0.90, 1.00]
+    capacity: [43, 84, 126, 162, 192]
+    build: 1.25
+    integration: 0.50
+    security: 0.60
+    setup: 0.40
+    infra: 0.52
+    staff: 1.64
+    licenses: 0.18
+    allocation: 0.55
+    ops_trade: 8
+    service_factor: 0.96
+    fx_factor: 1.0
+    first_month: 4
+    capital_limit: 12
+    weight_limit: 0.24
+    complexity: 2
+    limit_turnover: true
+cases:
+  Conservative: {reach: 0.74, activation: 0.83, to_quote: 0.80, close: 0.88, retention: 0.89, ticket: 0.84, margin: 0.80, paid: 0.60, repeat: 0.84, cost: 1.20, capital: 1.20, cannibal_delta: 0.10, delay: 2}
+  Base: {reach: 1.0, activation: 1.0, to_quote: 1.0, close: 1.0, retention: 1.0, ticket: 1.0, margin: 1.0, paid: 1.0, repeat: 1.0, cost: 1.0, capital: 1.0, cannibal_delta: 0.0, delay: 0}
+  Optimistic: {reach: 1.22, activation: 1.12, to_quote: 1.12, close: 1.08, retention: 1.07, ticket: 1.14, margin: 1.12, paid: 1.3, repeat: 1.12, cost: 0.91, capital: 0.93, cannibal_delta: -0.07, delay: 0}
+market_niches:
+  - [Оборудование, recurring, "Повторные транши и сроки поставки", "ERP/договоры, 3+ подтверждённых платежа за год"]
+  - [Промпроизводство, mixed, "Импортные затраты и валютная выручка", "Валюта и сроки по каждому потоку, двустороннее покрытие"]
+  - [Оптовая торговля, mid, "Регулярное пополнение запасов", "Платёжный календарь, сравнение контрактов одного клиента"]
+  - [Дистрибуция, mid, "Цена в RUB с оговоркой CNY", "Лаг между пересчётом и оплатой, проверка индекса"]
+  - [Логистика, small, "Платежи и агентские комиссии, разный график", "Отделить транзитные платежи и неттинг"]
+  - [Закупки в Китае, recurring, "Регулярная закупка и крупный номинал", "Подтверждённый индекс, контрагенты и исполнение"]
+  - [Экспортёры, mixed, "Валютная выручка и рублёвая себестоимость", "Подтверждённая доступность выручки и направление сделки"]
+search:
+  reach: [0.85, 1.0, 1.15]
+  ticket: [0.85, 1.0, 1.15]
+  margin_delta: [-5, 0, 5]
+  paid: [0.75, 1.0, 1.25]
+  capex: [0.85, 1.0, 1.20]
+  retention: [0.94, 1.0, 1.06]
+  to_quote: [0.90, 1.0, 1.10]
+ranking:
+  weights: [0.25, 0.20, 0.15, 0.15, 0.10, 0.10, 0.05]
+  profiles:
+    - [0.35, 0.20, 0.13, 0.15, 0.07, 0.07, 0.03]
+    - [0.16, 0.25, 0.17, 0.17, 0.10, 0.07, 0.08]
+    - [0.16, 0.16, 0.15, 0.15, 0.10, 0.23, 0.05]
+  # Evidence, fit for clients, scalability and residual implementation risk.
+  # Scores are qualitative project assessments, 1 poor through 5 strong.
+  factors:
+    full: [2, 5, 5, 1]
+    lean: [4, 3, 2, 5]
+    dbo: [3, 4, 5, 3]
+    premium: [2, 4, 2, 3]
+    trade: [2, 4, 3, 2]
+    high_turnover: [3, 4, 3, 3]
+    hybrid: [3, 5, 4, 3]
+    staged: [4, 5, 3, 4]
+stresses:
+  conversion_down25: ["Конверсия сделки −25%", {close: 0.75}]
+  reach_down25: ["Доступный охват −25%", {reach: 0.75}]
+  margin_down20: ["FX-маржа −20%", {margin_delta: -6.2}]
+  ticket_down20: ["Средний номинал −20%", {ticket: 0.8}]
+  capex_up30: ["Старт и CAPEX +30%", {capex: 1.30}]
+  delay4: ["Запуск на 4 месяца позже", {delay: 4}]
+  no_premium: ["Нулевая готовность к платной аналитике", {paid: 0}]
+  rfq_down20: ["Спрос на котировки −20%", {to_quote: 0.80}]
+  service_up35: ["Сопровождение +35%", {service: 1.35}]
+  capital_up30: ["Требования к капиталу +30%", {capital: 1.30}]
+  cac_up30: ["CAC +30%", {cac: 1.30}]
+  repeat_down25: ["Повторные сделки −25%", {repeat: 0.75}]
+  retention_down15: ["Годовое удержание −15%", {retention: 0.85}]
+  displacement_up10: ["Каннибализация +10 п.п.", {cannibal_delta: 0.10}]
+  joint: ["Совместный негативный", {reach: 0.75, close: 0.75, paid: 0.60, service: 1.20, capex: 1.30, delay: 2}]

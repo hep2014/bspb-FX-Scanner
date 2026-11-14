@@ -1,0 +1,4 @@
+document_id,text_hash,reviewed_label,start,end,review_note
+cuad_f4e08224f33fba9b4d09,d2dcc7fa33b3143ae561025ba2e907e4c3d36a7ee3782f8b3d35744c7642a0f9,confirmed_fx,38562,38812,Section 9.8 sets a USD payment currency and provides conversion for sales denominated in another currency.
+cuad_424083274037f63d7530,b11620546fdb7064f93d013f9cf8bf325c41ece123bfb1b42ca63b06f33aaeec,confirmed_fx,70113,70367,Section 12.16 allocates exposure to exchange-rate fluctuation to the distributor.
+cuad_9cb8792292d20588ecdd,970873275c228d4c10c4944fcec4dcb4c9cbd52fb5f01f667e74bcfc43a69868,confirmed_negative,0,488,Joint filing agreement. The dollar amount is a share par value. The agreement contains no foreign-currency obligation.

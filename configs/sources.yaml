@@ -1,0 +1,129 @@
+cbr_fx:
+  name: Официальные курсы USD, EUR, CNY
+  organization: Банк России
+  url: https://www.cbr.ru/development/SXML/
+  endpoint: https://www.cbr.ru/scripts/XML_dynamic.asp
+  formats: XML, XLSX
+  terms: Официальные справочные курсы. Указывать Банк России и дату действия.
+  codes: {USD: [R01235, '840'], EUR: [R01239, '978'], CNY: [R01375, '156']}
+cbr_ruonia:
+  name: RUONIA и параметры расчёта
+  organization: Банк России
+  url: https://www.cbr.ru/hd_base/ruonia/dynamics/
+  formats: HTML, XLSX
+  terms: Официальная публикация. Сохранять дату ставки и дату публикации.
+cbr_key_rate:
+  name: Ключевая ставка
+  organization: Банк России
+  url: https://www.cbr.ru/hd_base/KeyRate/
+  formats: HTML, XLSX
+  terms: Официальная публикация. Дата действия и дата решения могут отличаться.
+moex:
+  name: Spot, фьючерсы и спецификации MOEX ISS
+  organization: Московская биржа
+  url: https://www.moex.com/a2920
+  endpoint: https://iss.moex.com/iss
+  formats: JSON
+  terms: Условия MOEX ISS. Для коммерческого переиспользования и распространения сверить договор и лицензию.
+cuad:
+  name: CUAD v1
+  organization: The Atticus Project
+  url: https://zenodo.org/records/4595826
+  endpoint: https://zenodo.org/records/4595826/files/CUAD_v1.zip?download=1
+  categories_endpoint: https://raw.githubusercontent.com/The-Atticus-Project/cuad/main/category_descriptions.csv
+  md5: c38f490a984420b8a62600db401fafd5
+  formats: ZIP, JSON
+  terms: CC BY 4.0 по документации CUAD. Указывать The Atticus Project и происхождение. Права и PII исходных договоров проверять отдельно при распространении.
+contractnli:
+  name: ContractNLI
+  organization: Stanford NLP, Hitachi America
+  url: https://stanfordnlp.github.io/contract-nli/
+  formats: ZIP, JSON
+  terms: CC BY 4.0 с опубликованными условиями Hitachi. Кнопка Download явно означает принятие условий.
+  manual: Прочитать условия и самостоятельно загрузить архив, затем импортировать под ключом archive.
+eis:
+  name: ЕИС Закупки
+  organization: Федеральное казначейство
+  url: https://zakupki.gov.ru/
+  access_page: https://roskazna.gov.ru/gis/eis-zakupki-gov-ru
+  formats: HTML, PDF, DOCX
+  terms: Публичный доступ не устанавливает права на повторное использование. Проверять каждый документ и правила доступа.
+  manual: Отобрать доступные документы с проверенными правами и указать в configs/contract_documents.csv.
+sec:
+  name: SEC EDGAR
+  organization: U.S. Securities and Exchange Commission
+  url: https://www.sec.gov/edgar/search/
+  access_page: https://www.sec.gov/about/developer-resources
+  formats: HTML, TXT, PDF
+  terms: SEC Fair Access, идентифицирующий User-Agent, не более 10 запросов/с по всем машинам. Права на документы проверяются отдельно.
+  manual: Для подтверждённых материалов добавить записи в configs/contract_documents.csv. Для онлайн-запросов задать BSPB_SEC_USER_AGENT с именем организации и контактным email.
+stanford_mcc:
+  name: Material Contracts Corpus
+  organization: Stanford Law School
+  url: https://mcc.law.stanford.edu/
+  formats: HTML, TXT
+  terms: CC BY-NC-SA 4.0. Для коммерческого использования авторы просят связаться со Stanford Law School.
+  manual: Добавить разрешённые материалы в configs/contract_documents.csv.
+russian_court:
+  name: Судебные акты с выдержками из российских договоров
+  organization: Арбитражные суды РФ, опубликованные копии
+  url: https://sudact.ru/arbitral/
+  formats: HTML, TXT
+  terms: Используются проверенные обезличенные фрагменты официальных судебных актов для исследования. Хранятся отдельно от исходных договоров.
+  documents:
+    cny_supply: https://sudact.ru/arbitral/doc/EMoMlSQvVyZn/
+    usd_supply: https://sudact.ru/arbitral/doc/eFY8ez7Ns8mW/
+    eur_supply: https://base.garant.ru/66983532/
+cbr_trade_structure:
+  name: Валютная структура внешнеторговых расчётов
+  organization: Банк России
+  url: https://www.cbr.ru/statistics/macro_itm/external_sector/etg/
+  endpoint: https://www.cbr.ru/vfs/statistics/credit_statistics/cur_str_new.xlsx
+  formats: XLSX
+  terms: Официальная статистика. Сохранять группы валют, частоту и редакцию.
+cbr_trade_volume:
+  name: Стоимость внешней торговли товарами
+  organization: Банк России
+  url: https://www.cbr.ru/statistics/macro_itm/external_sector/etg/
+  endpoint: https://www.cbr.ru/vfs/statistics/credit_statistics/trade/trade.xls
+  formats: XLS
+  terms: Методология платёжного баланса. Сохранять охват товаров и единицы.
+cbr_derivatives:
+  name: Оборот и открытые позиции внебиржевого рынка ПФИ
+  organization: Банк России
+  url: https://www.cbr.ru/statistics/finr/
+  access_page: https://www.cbr.ru/statistics/data-service/APIdocumentation/
+  reviews:
+    review_2026: https://www.cbr.ru/Collection/Collection/File/62422/derivatives_market_2026.pdf
+    review_2025: https://www.cbr.ru/Collection/Collection/File/57267/derivatives_market_2025.pdf
+  formats: HTML, XLS, XLSX, PDF
+  terms: Сохранять вид показателя, период, единицу, тип инструмента и таблицу.
+  manual: Проверить структуру опубликованных таблиц. Подтверждённые позиции импорта описаны в configs/economics_observations.csv.
+bspb_ifrs:
+  name: Публичная отчётность МСФО
+  organization: Банк Санкт-Петербург
+  url: https://www.bspb.ru/investors/financial-statements/IFRS
+  formats: HTML, PDF
+  terms: Публичное раскрытие. Периоды, страницы и единицы фиксируются отдельно от РСБУ.
+bspb_ras:
+  name: Публичная отчётность РСБУ
+  organization: Банк Санкт-Петербург
+  url: https://www.bspb.ru/investors/financial-statements/RAS
+  formats: HTML, PDF
+  terms: Публичное раскрытие. Нужна ссылка на конкретную форму, страницу или строку.
+bspb_release:
+  name: Финансовые результаты 2025 по МСФО, пресс-релиз
+  organization: Банк Санкт-Петербург
+  url: https://www.bspb.ru/news/2026/260306
+  releases:
+    fy_2025: [https://www.bspb.ru/news/2026/260306, '2026-03-06']
+    h1_2026: [https://www.bspb.ru/news/2026/260821-1, '2026-08-21']
+  formats: HTML
+  terms: Использовать с указанием пресс-релиза, округления и отчётного периода.
+case_workbook:
+  name: Кейс ДОФР ВШЭ.xlsx
+  organization: Материалы кейса
+  url: https://chatgpt.com/library?file_id=libfile_07733c7df30c8191b35054a145f3c9ae&account_id=personal
+  formats: XLSX
+  terms: Материалы для команды. Значения из графиков и аппроксимации сверяются с официальными таблицами.
+  manual: Импортировать пользовательский файл под ключом workbook и сверить показатели перед использованием.

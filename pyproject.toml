@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bspb-fx-data"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "filelock>=3.16,<4",
+  "httpx>=0.27,<1",
+  "lxml>=5,<7",
+  "numpy>=1.26,<3",
+  "openpyxl>=3.1,<4",
+  "pandas>=2.2,<4",
+  "pyarrow>=17,<25",
+  "pydantic>=2.8,<3",
+  "PyYAML>=6,<7",
+  "tzdata>=2024.1",
+  "xlrd>=2,<3",
+]
+
+[project.optional-dependencies]
+pdf = ["pypdf>=5,<8"]
+test = ["pytest>=8,<10"]
+research = ["matplotlib>=3.8,<4", "reportlab>=4,<5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

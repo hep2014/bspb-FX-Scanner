@@ -1,0 +1,7 @@
+﻿period_start,period_end,frequency,imports_goods_usd_mn,imports_services_usd_mn,source_id,source_locator
+2024-01-01,2024-12-31,year,301548,81306,CB4,table 1.1 total 2024
+2025-01-01,2025-12-31,year,306354,94899,CB4,table 1.1 total 2025
+2025-01-01,2025-03-31,quarter,66721,17840,CB4,table 1.1 I 2025
+2025-04-01,2025-06-30,quarter,75075,24678,CB4,table 1.1 II 2025
+2026-01-01,2026-03-31,quarter,73801,20126,CB4 CB14,table 1.1 I 2026
+2026-04-01,2026-06-30,quarter,86291,25081,CB4 CB14,table 1.1 II 2026

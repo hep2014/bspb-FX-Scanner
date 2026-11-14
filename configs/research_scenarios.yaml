@@ -1,0 +1,18 @@
+start: 2019-01-01
+end: 2026-11-12
+horizons: [30, 60, 90]
+max_calendar_gap: 7
+test_starts: 2024-01-01
+post_venue_change: 2024-06-13
+annual_lock_cost_bps: 200
+execution_fee_bps: 10
+cost_sensitivity_bps: [0, 100, 200, 400, 800]
+rolling_days: 30
+budget_limit: 0.03
+risk_lookback_days: 365
+risk_min_observations: 60
+tail_probability: 0.95
+scenarios:
+  - {id: importer, name: "Импортёр", currency: CNY, payment_currency: RUB, payable: 1000000, receivable: 0}
+  - {id: exporter, name: "Экспортёр", currency: USD, payment_currency: RUB, payable: 0, receivable: 1000000}
+  - {id: mixed, name: "Смешанная", currency: CNY, payment_currency: RUB, payable: 1000000, receivable: 600000}

@@ -1,0 +1,31 @@
+start_date: '2019-01-01'
+end_date: '2026-11-12'
+timeout_seconds: 18
+attempts: 3
+minimum_request_interval: 0.25
+max_response_mib: 175
+spot_jump_threshold: 0.08
+# Review from date keys is always inclusive. Data availability uses publication_date.
+contract_min_characters: 300
+candidate_context_chars: 130
+# Each contract family is discovered from the official ISS search for the root.
+moex:
+  history_page_limit: 125
+  spot_restriction_date: '2024-06-13'
+  spot_restricted_currencies: [USD, EUR]
+  expiring:
+    CR: CNY
+    Si: USD
+    Eu: EUR
+  quarterly_month_codes: H, M, U, Z
+  perpetual:
+    CNYRUBF: CNY
+    USDRUBF: USD
+    EURRUBF: EUR
+  spot:
+    CNYRUB_TOM: [CNY, TOM]
+    CNY000000TOD: [CNY, TOD]
+    USD000UTSTOM: [USD, TOM]
+    USD000000TOD: [USD, TOD]
+    EUR_RUB__TOM: [EUR, TOM]
+    EUR_RUB__TOD: [EUR, TOD]

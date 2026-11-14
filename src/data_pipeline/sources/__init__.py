@@ -1,0 +1,1 @@
+"""First-party source adapters."""

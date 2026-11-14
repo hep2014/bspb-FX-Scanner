@@ -1,0 +1,10 @@
+source_id,raw_key,page,expected_line,expected_value,period_start,period_end,publication_date,indicator,label,unit
+bspb_ifrs,BSPB_IFRS_FY_2025_public_ru_1_325230e819,52,от операций с производными финансовыми инструментами,5 683,2025-01-01,2025-12-31,2026-03-06,fx_and_derivatives_income,"Валютные операции, переоценка и ПФИ",rub_mn
+bspb_ifrs,BSPB_IFRS_FY_2025_public_ru_1_325230e819,53,Чистый комиссионный доход,11 787,2025-01-01,2025-12-31,2026-03-06,net_fee_income,Чистый комиссионный доход,rub_mn
+bspb_ifrs,BSPB_IFRS_FY_2025_public_ru_1_325230e819,81,Всего капитал,207 850,2025-12-31,2025-12-31,2026-03-06,regulatory_total_capital,Регуляторный капитал банковской группы,rub_mn
+bspb_ifrs,BSPB_IFRS_FY_2025_public_ru_1_325230e819,81,Основной капитал,195 724,2025-12-31,2025-12-31,2026-03-06,tier1_capital,Основной капитал банковской группы,rub_mn
+bspb_ifrs,BSPB_IFRS_FY_2025_public_ru_1_325230e819,81,достаточности капитала H 20.0,"21,41%",2025-12-31,2025-12-31,2026-03-06,capital_adequacy_n20_0,Норматив группы Н20.0,pct
+bspb_ifrs,BSPB_IFRS_1_H2026_public_ru_f289192350,40,Чистый комиссионный доход,5 941,2026-01-01,2026-06-30,2026-08-21,net_fee_income,Чистый комиссионный доход,rub_mn
+bspb_ifrs,BSPB_IFRS_1_H2026_public_ru_f289192350,51,Всего капитал,195 792,2026-06-30,2026-06-30,2026-08-21,regulatory_total_capital,Регуляторный капитал банковской группы,rub_mn
+bspb_ifrs,BSPB_IFRS_1_H2026_public_ru_f289192350,51,Основной капитал,180 439,2026-06-30,2026-06-30,2026-08-21,tier1_capital,Основной капитал банковской группы,rub_mn
+bspb_ifrs,BSPB_IFRS_1_H2026_public_ru_f289192350,51,достаточности капитала Н 20.0,"19,31%",2026-06-30,2026-06-30,2026-08-21,capital_adequacy_n20_0,Норматив группы Н20.0,pct
